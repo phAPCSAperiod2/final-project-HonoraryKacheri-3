@@ -16,7 +16,8 @@ public class Pokemon
     private int spd;
     private int spe;
     private ArrayList<Move> movesList;
-    private String strategy;
+    private String roleDesc;
+    private String strategyDesc;
 
     public Pokemon(String pokemonName, String type1, String type2, int hp, int atk, int def, int spa, int spd, int spe){
         this.name = pokemonName;
@@ -85,10 +86,14 @@ public class Pokemon
         movesList.remove(i);
     }
 
-    public void setStretegy(){
-        System.out.println("What will your Pokemon do? What role will it fill? Enter strategy now.");
-        String newStrategy = input.nextLine();
-        strategy = newStrategy;
+    public void addDescription(){
+        System.out.println("Describe what your Pokemon should do, what role it should fill.");
+        String roleDesc = scanner.nextLine();
+        System.out.println("Describe what strategies your Pokemon would do, such as move sequences or synergies/counters with other Pokemon.");
+        String strategyDesc = scanner.nextLine();
+        this.roleDesc = roleDesc;
+        this.strategyDesc = strategyDesc;
+    }
 
     public String toString(){
         if (image != null){
