@@ -15,8 +15,8 @@ public class Pokemon
     private int spa;
     private int spd;
     private int spe;
-    private String image;
     private ArrayList<Move> movesList;
+    private String strategy;
 
     public Pokemon(String pokemonName, String type1, String type2, int hp, int atk, int def, int spa, int spd, int spe){
         this.name = pokemonName;
@@ -27,18 +27,8 @@ public class Pokemon
         this.spd = spd;
         this.spe = spe;
         this.movesList = new ArrayList<Move>();
-    }
-
-    public Pokemon(String pokemonName, String type1, String type2, int hp, int atk, int def, int spa, int spd, int spe, String image){
-        this.name = pokemonName;
-        this.health = hp;
-        this.atk = atk;
-        this.def = def;
-        this.spa = spa;
-        this.spd = spd;
-        this.spe = spe;
-        this.movesList = new ArrayList<Move>();
-        this.image = image;
+        String strategy = "";
+        this.strategy = strategy;
     }
 
     public String getName(){
@@ -47,15 +37,6 @@ public class Pokemon
 
     public int getHealth(){
         return hp;
-    }
-
-    public boolean hasFainted(){
-        if (hp <= 0){
-            return true;
-        }
-        else{
-            return false;
-        }
     }
 
     public boolean learnMove(){
@@ -104,6 +85,11 @@ public class Pokemon
         movesList.remove(i);
     }
 
+    public void setStretegy(){
+        System.out.println("What will your Pokemon do? What role will it fill? Enter strategy now.");
+        String newStrategy = input.nextLine();
+        strategy = newStrategy;
+
     public String toString(){
         if (image != null){
             return (getName() + " (Health: " + hp + " / " + MAX_HEALTH + ") /n" + image);
@@ -115,10 +101,6 @@ public class Pokemon
 
     public void setImage(String image){
         this.image = image;
-    }
-
-    public String getImage(){
-        return image;
     }
 
     public ArrayList<Move> getMoves(){
@@ -136,26 +118,3 @@ public class Pokemon
             }
         }
         return false;
-    }
-
-    public boolean attack(Pokemon opponent, Move move){
-        if (knowsMove(move) == true){
-            opponent.hp -= move.getDamage();
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
-
-    public boolean attack(Pokemon opponent, String moveName){
-        if(this.knowsMove(moveName)){
-            for (int i = 0; i < movesList.size(); i++){
-                if (moveName.equals(movesList.get(i).getName())){
-                    return attack(opponent, movesList.get(i));
-                }
-            }
-        }
-        return false;
-    }
-}
