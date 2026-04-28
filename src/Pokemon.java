@@ -96,6 +96,14 @@ public class Pokemon
     public int getSPE(){
         return this.spe;
     }
+
+    public String getRole(){
+        return this.roleDesc;
+    }
+
+    public String getStrategy(){
+        return this.strategyDesc;
+    }
     
     public boolean canLearnMoreMoves(){
         if (movesList.size() >= 4){
