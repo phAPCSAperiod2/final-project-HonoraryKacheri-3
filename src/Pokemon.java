@@ -73,6 +73,30 @@ public class Pokemon
         }
     }
 
+    public int getHP(){
+        return this.hp;
+    }
+
+    public int getATK(){
+        return this.atk;
+    }
+
+    public int getDEF(){
+        return this.def;
+    }
+
+    public int getSPA(){
+        return this.spa;
+    }
+
+    public int getSPD(){
+        return this.spd;
+    }
+
+    public int getSPE(){
+        return this.spe;
+    }
+    
     public boolean canLearnMoreMoves(){
         if (movesList.size() >= 4){
             return false;
@@ -102,10 +126,6 @@ public class Pokemon
         else{
             return (getName() + " (Health: " + hp + " / " + MAX_HEALTH + ")");
         }
-    }
-
-    public void setImage(String image){
-        this.image = image;
     }
 
     public ArrayList<Move> getMoves(){
