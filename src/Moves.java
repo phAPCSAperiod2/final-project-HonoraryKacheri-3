@@ -1,4 +1,4 @@
-public class Move
+public class Moves
 {
     // Private constants
     private static final int MAX_DAMAGE = 150;
@@ -7,7 +7,7 @@ public class Move
     private String type;
     private int damage;
 
-    public Move(String attackName, String attackType, int attackDamage){
+    public Moves(String attackName, String attackType, int attackDamage){
         this.moveName = attackName;
         this.type = attackType;
         this.damage = attackDamage;
@@ -16,7 +16,7 @@ public class Move
         }
     }
 
-    public Move(String attackName, String attackType, String moveDescription){
+    public Moves(String attackName, String attackType, String moveDescription){
         this.moveName = attackName;
         this.type = attackType;
         this.damage = 0;
@@ -28,6 +28,10 @@ public class Move
 
     public int getDamage(){
         return damage;
+    }
+
+    public String getType(){
+        return type;
     }
 
     public String toString(){

@@ -15,21 +15,21 @@ public class Pokemon
     private int spa;
     private int spd;
     private int spe;
-    private ArrayList<Move> movesList;
+    private ArrayList<Moves> movesList;
     private String roleDesc;
     private String strategyDesc;
 
     public Pokemon(String pokemonName, String type1, String type2, int hp, int atk, int def, int spa, int spd, int spe){
         this.name = pokemonName;
-        this.health = hp;
+        this.hp = hp;
         this.atk = atk;
         this.def = def;
         this.spa = spa;
         this.spd = spd;
         this.spe = spe;
-        this.movesList = new ArrayList<Move>();
+        this.movesList = new ArrayList<Moves>();
         String strategy = "";
-        this.strategy = strategy;
+        this.strategyDesc = strategy;
     }
 
     public String getName(){
@@ -42,22 +42,23 @@ public class Pokemon
 
     public boolean learnMove(){
         System.out.print("What will be the move's name? ");
-        String moveName = scanner.nextLine();
+        String moveName = input.nextLine();
         System.out.println();
         System.out.print("What will be the move's type? ");
-        String moveType = scanner.nextLine();
+        String moveType = input.nextLine();
         System.out.println();
         System.out.print("How much damage does it do? ");
-        int moveDamage = scanner.nextInt();
+        int moveDamage = input.nextInt();
         if (moveDamage == 0){
             System.out.println("What does the move do?");
-            String moveDesc = scanner.nextLine();
-            System.out.println("It will be named " + moveName + ", be " + moveType + "type, and it will " + moveDesc + ".")
+            String moveDesc = input.nextLine();
+            System.out.println("It will be named " + moveName + ", be " + moveType + "type, and it will " + moveDesc + ".");
             if (movesList.size() >= 4){
                 return false;
             }
             else{
-                movesList.add(moveName, moveType, moveDesc);
+                movesList.add(Moves(moveName, moveType, moveDesc));
+                return true;
             }
         }
         else{
@@ -67,10 +68,18 @@ public class Pokemon
                 return false;
             }
             else{
-                movesList.add(moveName, moveType, moveDamage);
+                movesList.add(Moves(moveName, moveType, moveDamage));
                 return true;
             }
         }
+    }
+
+    private Moves Moves(String moveName, String moveType, int moveDamage) {
+        throw new UnsupportedOperationException("Unimplemented method 'Moves'");
+    }
+
+    private Moves Moves(String moveName, String moveType, String moveDesc) {
+        throw new UnsupportedOperationException("Unimplemented method 'Moves'");
     }
 
     public int getHP(){
@@ -104,7 +113,7 @@ public class Pokemon
     public String getStrategy(){
         return this.strategyDesc;
     }
-    
+
     public boolean canLearnMoreMoves(){
         if (movesList.size() >= 4){
             return false;
@@ -120,34 +129,22 @@ public class Pokemon
 
     public void addDescription(){
         System.out.println("Describe what your Pokemon should do, what role it should fill.");
-        String roleDesc = scanner.nextLine();
+        String roleDesc = input.nextLine();
         System.out.println("Describe what strategies your Pokemon would do, such as move sequences or synergies/counters with other Pokemon.");
-        String strategyDesc = scanner.nextLine();
+        String strategyDesc = input.nextLine();
         this.roleDesc = roleDesc;
         this.strategyDesc = strategyDesc;
     }
 
     public String toString(){
-        if (image != null){
-            return (getName() + " (Health: " + hp + " / " + MAX_HEALTH + ") /n" + image);
-        }
-        else{
-            return (getName() + " (Health: " + hp + " / " + MAX_HEALTH + ")");
-        }
+        return (getName() + " (Health: " + hp + " / " + MAX_HEALTH + ")");
     }
 
-    public ArrayList<Move> getMoves(){
+    public ArrayList<Moves> getMoves(){
         return movesList;
     }
 
-    public boolean knowsMove(Move move){
+    public boolean knowsMove(Moves move){
         return movesList.contains(move);
     }
-
-    public boolean knowsMove(String moveName){
-        for (int i = 0; i < movesList.size(); i++){
-            if (item.equals(moveName)){
-                return true;
-            }
-        }
-        return false;
+}

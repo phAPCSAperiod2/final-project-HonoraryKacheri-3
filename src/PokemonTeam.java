@@ -1,10 +1,11 @@
-import Java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Scanner;
 public class PokemonTeam
 {
     Scanner input = new Scanner(System.in);
     // private constants
     private static final int MAX_POKEMON = 6;
-    private String partyName = name;
+    private String partyName = "";
     private ArrayList<Pokemon> party;
     private String generalStrategy = "";
 
@@ -14,7 +15,7 @@ public class PokemonTeam
     }
 
     public boolean addPokemon(Pokemon p){
-        if (party.getSize() >= 6){
+        if (party.size() >= 6){
             party.add(p);
             return true;
         }
@@ -23,12 +24,8 @@ public class PokemonTeam
         }
     }
 
-    public void addStrategy();{
+    public void addStrategy(){
         System.out.println("Input your team's general strategy.");
         generalStrategy = input.nextLine();
-    }
-
-    public void interPokeStrategy(Pokemon p1, Pokemon p2){
-        System.out.println("What is the strategy between these two Pokemon?");
     }
 }
