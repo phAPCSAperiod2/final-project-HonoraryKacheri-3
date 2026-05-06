@@ -59,9 +59,10 @@ public class Pokemon {
         int moveDamage = input.nextInt();
         if (moveDamage == 0) {
             System.out.println("What does the move do?");
+            input.nextLine();
             String moveDesc = input.nextLine();
             System.out.println(
-                    "It will be named " + moveName + ", be " + moveType + "type, and it will " + moveDesc + ".");
+                    "It will be named " + moveName + ", be " + moveType + " type, and it will do: " + moveDesc + ".");
             if (movesList.size() >= MAX_MOVES) {
                 return false;
             } else {

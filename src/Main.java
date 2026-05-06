@@ -6,27 +6,26 @@ public class Main {
         Scanner input = new Scanner(System.in);
         for (int i = 0; i <= 6; i++) {
             System.out.println("Create your Pokemon!");
-            System.out.print("What is it's name?");
+            System.out.print("What is it's name? ");
             String newPokemonName = input.nextLine();
             System.out.println();
-            System.out.print("What is it's first type?");
+            System.out.print("What is it's first type? ");
             String newType1 = input.nextLine();
-            System.out.println();
-            System.out.print("What is it's second type?");
+            System.out.print("What is it's second type? ");
             String newType2 = input.nextLine();
             System.out.println();
             System.out.println("Now, rapid fire the stats!");
-            System.out.print("HP!");
+            System.out.print("HP! ");
             int newHP = input.nextInt();
-            System.out.print("Attack!");
+            System.out.print("Attack! ");
             int newATK = input.nextInt();
-            System.out.print("Defense!");
+            System.out.print("Defense! ");
             int newDEF = input.nextInt();
-            System.out.print("Special Attack!");
+            System.out.print("Special Attack! ");
             int newSPA = input.nextInt();
-            System.out.print("Special Defense!");
+            System.out.print("Special Defense! ");
             int newSPD = input.nextInt();
-            System.out.print("Speed!");
+            System.out.print("Speed! ");
             int newSPE = input.nextInt();
             System.out.println();
             System.out.println("Congrats, you have made a new Pokemon!");
@@ -45,6 +44,11 @@ public class Main {
             System.out.println("What does it do?");
             String newItemDesc = input.nextLine();
             newPokemon.setItem(newItemName, newItemDesc);
+            System.out.println();
+            System.out.println("Finally, for it's description!");
+            newPokemon.addDescription();
+            System.out.println();
+            System.out.println("You're done!");
             PokemonTeam.addPokemon(newPokemon);
         }
     }
