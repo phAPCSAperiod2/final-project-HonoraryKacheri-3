@@ -19,6 +19,8 @@ public class Pokemon {
     private ArrayList<Moves> movesList;
     private String roleDesc;
     private String strategyDesc;
+    private String item;
+    private String itemDesc;
 
     public Pokemon(String pokemonName, String type1, String type2, int hp, int atk, int def, int spa, int spd,
             int spe) {
@@ -34,6 +36,8 @@ public class Pokemon {
         this.strategyDesc = strategy;
         this.type1 = type1;
         this.type2 = type2;
+        this.item = "";
+        this.itemDesc = "";
     }
 
     public String getName() {
@@ -83,6 +87,15 @@ public class Pokemon {
 
     private Moves Moves(String moveName, String moveType, String moveDesc) {
         throw new UnsupportedOperationException("Unimplemented method 'Moves'");
+    }
+
+    public void setItem(String itemName, String itemDesc) {
+        this.item = itemName;
+        this.itemDesc = itemDesc;
+    }
+
+    public String getItem() {
+        return ("The name is " + this.item + ", and it's description is: " + this.itemDesc);
     }
 
     public int getHP() {

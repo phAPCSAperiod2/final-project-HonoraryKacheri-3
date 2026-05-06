@@ -6,15 +6,15 @@ public class PokemonTeam {
     // private constants
     private static final int MAX_POKEMON = 6;
     private String partyName = "";
-    private ArrayList<Pokemon> party;
+    private static ArrayList<Pokemon> party;
     private String generalStrategy = "";
 
     public PokemonTeam(String name) {
         this.partyName = name;
-        this.party = new ArrayList<Pokemon>();
+        PokemonTeam.party = new ArrayList<Pokemon>();
     }
 
-    public boolean addPokemon(Pokemon p) {
+    public static boolean addPokemon(Pokemon p) {
         if (party.size() >= MAX_POKEMON) {
             party.add(p);
             return true;
