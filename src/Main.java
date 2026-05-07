@@ -36,8 +36,9 @@ public class Main {
                     newSPE);
             System.out.println();
             System.out.println("Now for the moves!");
-            for (int j = 0; j <= 4; j++) {
-                newPokemon.learnMove();
+            boolean keepGoing = true;
+            while (keepGoing) {
+                keepGoing = newPokemon.learnMove();
             }
             System.out.println();
             System.out.println("Great, now it has it's moves!");
