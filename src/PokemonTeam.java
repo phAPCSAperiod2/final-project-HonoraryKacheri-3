@@ -30,7 +30,7 @@ public class PokemonTeam {
 
     public String toString() {
         return ("The team is named " + partyName + ", has " + party.size()
-                + " Pokemon inside it, and the general strategy is " + generalStrategy);
+                + " Pokemon inside it, and the general strategy is: " + generalStrategy);
     }
 
     public void pokemonList() {

@@ -2,8 +2,11 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        new PokemonTeam("Gabagool");
         Scanner input = new Scanner(System.in);
+        System.out.println("Hello! What is your name? ");
+        String userName = input.nextLine();
+        System.out.println("Ah, " + userName + "! Go ahead and pick any Pokemon you want for your team!");
+        new PokemonTeam("Gabagool");
         for (int i = 0; i <= 6; i++) {
             System.out.println("Create your Pokemon!");
             System.out.print("What is it's name? ");
@@ -48,7 +51,7 @@ public class Main {
             System.out.println("Finally, for it's description!");
             newPokemon.addDescription();
             System.out.println();
-            System.out.println("You're done!");
+            System.out.println("You're done with this one!");
             PokemonTeam.addPokemon(newPokemon);
         }
     }
