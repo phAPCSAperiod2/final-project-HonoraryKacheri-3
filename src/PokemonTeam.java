@@ -8,10 +8,14 @@ public class PokemonTeam {
     private String partyName = "";
     private static ArrayList<Pokemon> party;
     private String generalStrategy = "";
+    private int teamNumber = 0;
+    private static int numberOfTeams = 0;
 
     public PokemonTeam(String name) {
         this.partyName = name;
         PokemonTeam.party = new ArrayList<Pokemon>();
+        PokemonTeam.numberOfTeams += 1;
+        this.teamNumber = PokemonTeam.numberOfTeams;
     }
 
     public static boolean addPokemon(Pokemon p) {
@@ -37,5 +41,9 @@ public class PokemonTeam {
         for (int i = 0; i <= party.size(); i++) {
             System.out.println("Name: " + party.get(i).getName() + ", types: " + party.get(i).getTypes() + ".");
         }
+    }
+
+    public int getTeamNumber() {
+        return teamNumber;
     }
 }
