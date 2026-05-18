@@ -21,6 +21,10 @@ public class Pokemon {
     private String strategyDesc;
     private String item;
     private String itemDesc;
+    @SuppressWarnings("unused")
+    private String ability;
+    @SuppressWarnings("unused")
+    private String abilityDesc;
 
     public Pokemon(String pokemonName, String type1, String type2, int hp, int atk, int def, int spa, int spd,
             int spe) {
@@ -38,6 +42,8 @@ public class Pokemon {
         this.type2 = type2;
         this.item = "";
         this.itemDesc = "";
+        this.ability = "";
+        this.abilityDesc = "";
     }
 
     public String getName() {
@@ -58,6 +64,8 @@ public class Pokemon {
         System.out.print("How much damage does it do? ");
         int moveDamage = input.nextInt();
         input.nextLine();
+        System.out.println("What is the secondary effect, if any?");
+        String secondaryEffect = input.nextLine();
         if (moveDamage == 0) {
             System.out.println("What does the move do?");
             String moveDesc = input.nextLine();
@@ -72,7 +80,8 @@ public class Pokemon {
         } else {
             System.out.println();
             System.out.println(
-                    "It will be named " + moveName + ", be " + moveType + " type, and deal " + moveDamage + " damage.");
+                    "It will be named " + moveName + ", be " + moveType + " type, and deal " + moveDamage
+                            + " damage. It has a secondary effect of " + secondaryEffect + ".");
             if (movesList.size() >= MAX_MOVES) {
                 return false;
             } else {
@@ -85,6 +94,11 @@ public class Pokemon {
     public void setItem(String itemName, String itemDesc) {
         this.item = itemName;
         this.itemDesc = itemDesc;
+    }
+
+    public void setAbility(String ability, String abilityDesc) {
+        this.ability = ability;
+        this.abilityDesc = abilityDesc;
     }
 
     public String getItem() {
