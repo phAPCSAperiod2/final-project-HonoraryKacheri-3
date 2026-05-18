@@ -57,37 +57,29 @@ public class Pokemon {
         System.out.println();
         System.out.print("How much damage does it do? ");
         int moveDamage = input.nextInt();
+        input.nextLine();
         if (moveDamage == 0) {
             System.out.println("What does the move do?");
-            input.nextLine();
             String moveDesc = input.nextLine();
             System.out.println(
                     "It will be named " + moveName + ", be " + moveType + " type, and it will do: " + moveDesc + ".");
             if (movesList.size() >= MAX_MOVES) {
                 return false;
             } else {
-                movesList.add(Moves(moveName, moveType, moveDesc));
+                movesList.add(new Moves(moveName, moveType, moveDesc));
                 return true;
             }
         } else {
             System.out.println();
             System.out.println(
                     "It will be named " + moveName + ", be " + moveType + " type, and deal " + moveDamage + " damage.");
-            if (movesList.size() >= 4) {
+            if (movesList.size() >= MAX_MOVES) {
                 return false;
             } else {
-                movesList.add(Moves(moveName, moveType, moveDamage));
+                movesList.add(new Moves(moveName, moveType, moveDamage));
                 return true;
             }
         }
-    }
-
-    private Moves Moves(String moveName, String moveType, int moveDamage) {
-        throw new UnsupportedOperationException("Unimplemented method 'Moves'");
-    }
-
-    private Moves Moves(String moveName, String moveType, String moveDesc) {
-        throw new UnsupportedOperationException("Unimplemented method 'Moves'");
     }
 
     public void setItem(String itemName, String itemDesc) {
