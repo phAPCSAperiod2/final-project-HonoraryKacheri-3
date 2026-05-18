@@ -3,21 +3,34 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) throws Exception {
         Scanner input = new Scanner(System.in);
-        PokemonTeam Gabagool = new PokemonTeam("Gabagool");
+        PokemonTeam defaultTeam = new PokemonTeam("Gabagool");
+
         System.out.println("Hello! What is your name? ");
         String userName = input.nextLine();
         System.out.println("Ah, " + userName + "! Now, what shall you do next?");
-        System.out.println("1: Add Pokemon to your team. /n2: Create a new team.");
+        System.out.println("1: Add Pokemon to your team. \n2: Create a new team.");
         int action = input.nextInt();
+        input.nextLine();
+
         if (action == 1) {
-            for (int i = 0; i <= 6; i++) {
+            PokemonTeam.printAllTeams();
+            System.out.print("Enter the team number to add this Pokemon to: ");
+            int teamNumber = input.nextInt();
+            input.nextLine();
+            PokemonTeam selectedTeam = PokemonTeam.getTeamByNumber(teamNumber);
+            if (selectedTeam == null) {
+                System.out.println("No team found with number " + teamNumber + ". Adding to the default team instead.");
+                selectedTeam = defaultTeam;
+            }
+
+            for (int i = 0; i < 6; i++) {
                 System.out.println("Create your Pokemon!");
-                System.out.print("What is it's name? ");
+                System.out.print("What is its name? ");
                 String newPokemonName = input.nextLine();
                 System.out.println();
-                System.out.print("What is it's first type? ");
+                System.out.print("What is its first type? ");
                 String newType1 = input.nextLine();
-                System.out.print("What is it's second type? ");
+                System.out.print("What is its second type? ");
                 String newType2 = input.nextLine();
                 System.out.println();
                 System.out.println("Now, rapid fire the stats!");
@@ -33,6 +46,7 @@ public class Main {
                 int newSPD = input.nextInt();
                 System.out.print("Speed! ");
                 int newSPE = input.nextInt();
+                input.nextLine();
                 System.out.println();
                 System.out.println("Congrats, you have made a new Pokemon!");
                 Pokemon newPokemon = new Pokemon(newPokemonName, newType1, newType2, newHP, newATK, newDEF, newSPA,
@@ -45,20 +59,23 @@ public class Main {
                     keepGoing = newPokemon.learnMove();
                 }
                 System.out.println();
-                System.out.println("Great, now it has it's moves!");
-                System.out.println("Now for it's item!");
-                System.out.println("What is the item's name?");
+                System.out.println("Great, now it has its moves!");
+                System.out.println("Now for its item!");
+                System.out.print("What is the item's name? ");
                 String newItemName = input.nextLine();
-                System.out.println("What does it do?");
+                System.out.print("What does it do? ");
                 String newItemDesc = input.nextLine();
                 newPokemon.setItem(newItemName, newItemDesc);
                 System.out.println();
-                System.out.println("Finally, for it's description!");
+                System.out.println("Finally, for its description!");
                 newPokemon.addDescription();
                 System.out.println();
                 System.out.println("You're done with this one!");
-                System.out.println("Now, for which team is this added for?");
-                PokemonTeam.addPokemon(newPokemon);
+
+                if (!selectedTeam.addPokemon(newPokemon)) {
+                    System.out.println("That team is full. Stopping additions.");
+                    break;
+                }
             }
         }
 
@@ -66,6 +83,7 @@ public class Main {
             System.out.println("What will be the team's name?");
             String teamName = input.nextLine();
             PokemonTeam newTeam = new PokemonTeam(teamName);
+            System.out.println("Created team " + newTeam.getTeamNumber() + ": " + teamName);
         }
     }
 }
